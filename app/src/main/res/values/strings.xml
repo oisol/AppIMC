@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IMC</string>
+
+    <string name="txtPeso">PESO</string>
+    <string name="txtAltura">ALTURA</string>
+
+
+    <string name="btnCalcular">CALCULAR</string>
+
+</resources>
