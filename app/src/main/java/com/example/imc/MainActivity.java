@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -45,17 +46,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(evento.getId() == R.id.btnCalcular){
 
-            double peso = Double.parseDouble(edtPeso.getText().toString());
-            double altura = Double.parseDouble(edtAltura.getText().toString());
+            if ( edtAltura.getText().toString().equals("")){
 
-            // calculo
+                Toast.makeText(this, "Preencha o campo de altura", Toast.LENGTH_SHORT).show();
+                edtAltura.requestFocus();
 
-            double imc = (peso / (altura * altura));
+            } else if ( edtPeso.getText().toString().equals("")) {
 
-            txtResultado2.setVisibility(View.VISIBLE);
-            txtResultado.setText(String.valueOf(format.format(imc)));
+                Toast.makeText(this, "Preencha o campo de peso", Toast.LENGTH_SHORT).show();
+                edtPeso.requestFocus();
+
+            } else {
+
+                double peso = Double.parseDouble(edtPeso.getText().toString()
+                        .replace(",", "."));
+
+                double altura = Double.parseDouble(edtAltura.getText().toString()
+                        .replace(",", "."));
+
+                // calculo + validação
+
+                String msg = "";
+
+                if (altura <= 0 || altura > 3){
+
+                    msg = "Digte uma altura entre 0 e 3 metros";
+                    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                    edtAltura.requestFocus();
+
+                } else if (peso > 500 || peso <= 0) {
+
+                    msg = "Digite um peso entre 0 e 500";
+                    Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+                    edtPeso.requestFocus();
+
+                } else {
+
+                    double imc = (peso / (altura * altura));
+
+                    txtResultado2.setVisibility(View.VISIBLE);
+                    txtResultado.setText(String.valueOf(format.format(imc)));
+                }
+            }
+
+
 
         }
 
     }
+
+
+
 }
