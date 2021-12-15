@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Atribuição
+
         edtPeso = findViewById(R.id.edtPeso);
         edtAltura = findViewById(R.id.edtAltura);
 
@@ -31,20 +33,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnCalcular = findViewById(R.id.btnCalcular);
 
         btnCalcular.setOnClickListener(this);
-
         txtResultado2.setVisibility(View.INVISIBLE);
+
 
     }
 
     @Override
     public void onClick(View evento) {
+        // Fomatador
+        DecimalFormat format = new DecimalFormat("00.00");
+
         if(evento.getId() == R.id.btnCalcular){
+
             double peso = Double.parseDouble(edtPeso.getText().toString());
             double altura = Double.parseDouble(edtAltura.getText().toString());
-            DecimalFormat format = new DecimalFormat("00.00");
 
             // calculo
-            if( )
+
             double imc = (peso / (altura * altura));
 
             txtResultado2.setVisibility(View.VISIBLE);
