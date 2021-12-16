@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edtPeso, edtAltura;
-    private TextView txtResultado, txtResultado2;
+    private TextView txtResultado, txtResultado2, txtClassificacao;
     private Button btnCalcular;
 
 
@@ -30,11 +30,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         txtResultado = findViewById(R.id.txtResultado);
         txtResultado2 = findViewById(R.id.txtResultado2);
+        txtClassificacao = findViewById(R.id.txtClassificacao);
 
         btnCalcular = findViewById(R.id.btnCalcular);
 
+
         btnCalcular.setOnClickListener(this);
         txtResultado2.setVisibility(View.INVISIBLE);
+        txtClassificacao.setVisibility(View.INVISIBLE);
+        edtAltura.requestFocus();
 
 
     }
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(evento.getId() == R.id.btnCalcular){
 
+            // validações
             // Verificar se campos não estão vazios
 
             if ( edtAltura.getText().toString().equals("")){
@@ -68,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 double altura = Double.parseDouble(edtAltura.getText().toString()
                         .replace(",", "."));
 
-                // calculo + validação
 
                 String msg = "";
 
@@ -86,10 +90,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 } else {
 
-                    double imc = (peso / (altura * altura));
-
                     txtResultado2.setVisibility(View.VISIBLE);
+                    txtClassificacao.setVisibility(View.VISIBLE);
+
+                    // Chamando metodos da classe
+                    Calculos calculos = new Calculos();
+                    double imc = calculos.caucular(altura, peso);
+                    String classificacao  = calculos.classificar(imc);
+                    double paraNormal = calculos.paraNormal(imc);
+
                     txtResultado.setText(String.valueOf(format.format(imc)));
+
+                    if (paraNormal == 0){
+                        txtClassificacao.setText(new StringBuilder().append(classificacao)
+                                .append("Você está no peso ideal"));
+                    } else {
+                        txtClassificacao.setText(new StringBuilder().append(classificacao).append("Faltam ")
+                                .append(String.valueOf(format.format(paraNormal))).append(" para o peso ideal.").toString());
+                    }
+
+
                 }
             }
 

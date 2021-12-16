@@ -4,50 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/wallpaper_1080x1920">
 
     <EditText
         android:id="@+id/edtPeso"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="348dp"
+        android:layout_marginBottom="364dp"
         android:ems="10"
-        android:maxLength="6"
         android:inputType="numberDecimal"
+        android:maxLength="6"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintHorizontal_bias="0.787"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edtAltura"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="348dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="364dp"
+        android:gravity="center"
         android:ems="10"
         android:inputType="numberDecimal"
         android:maxLength="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/edtPeso"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:layout_width="82dp"
         android:layout_height="78dp"
         android:layout_marginStart="102dp"
-        android:layout_marginEnd="88dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/height"
         app:layout_constraintBottom_toTopOf="@+id/edtAltura"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="82dp"
         android:layout_height="78dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginEnd="84dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/weight"
         app:layout_constraintBottom_toTopOf="@+id/edtPeso"
@@ -55,12 +58,12 @@
 
     <TextView
         android:id="@+id/txtResultado"
-        android:layout_width="71dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="236dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="144dp"
         android:textColor="#555"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnCalcular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -70,12 +73,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginEnd="172dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:text="Resultado"
-        android:textSize="24sp"
         android:textColor="#555"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/txtResultado"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -86,9 +90,26 @@
         android:layout_marginEnd="155dp"
         android:layout_marginBottom="44dp"
         android:text="@string/btnCalcular"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.722"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtClassificacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="177dp"
+        android:textColor="#555"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtResultado" />
 </androidx.constraintlayout.widget.ConstraintLayout>
