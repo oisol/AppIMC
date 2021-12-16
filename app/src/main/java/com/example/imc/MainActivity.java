@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(evento.getId() == R.id.btnCalcular){
 
+            // Verificar se campos não estão vazios
+
             if ( edtAltura.getText().toString().equals("")){
 
                 Toast.makeText(this, "Preencha o campo de altura", Toast.LENGTH_SHORT).show();
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 edtPeso.requestFocus();
 
             } else {
+
+                // Substituindo virgulas por pontos
 
                 double peso = Double.parseDouble(edtPeso.getText().toString()
                         .replace(",", "."));
