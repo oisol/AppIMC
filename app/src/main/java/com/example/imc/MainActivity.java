@@ -2,6 +2,8 @@ package com.example.imc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -43,15 +45,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     @Override
     public void onClick(View evento) {
+
         // Fomatador
         DecimalFormat format = new DecimalFormat("00.00");
 
+
         if(evento.getId() == R.id.btnCalcular){
 
-            // validações
-            // Verificar se campos não estão vazios
+            /*
+                validações
+                Verificar se campos não estão vazios
+            */
 
             if ( edtAltura.getText().toString().equals("")){
 
@@ -88,23 +95,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                     edtPeso.requestFocus();
 
+                    // Fim da Validação
+
                 } else {
 
                     txtResultado2.setVisibility(View.VISIBLE);
                     txtClassificacao.setVisibility(View.VISIBLE);
 
                     // Chamando metodos da classe
+
                     Calculos calculos = new Calculos();
                     double imc = calculos.caucular(altura, peso);
                     String classificacao  = calculos.classificar(imc);
                     double paraNormal = calculos.paraNormal(imc);
 
-                    txtResultado.setText(String.valueOf(format.format(imc)));
+                    // Mostrando resultados
 
                     if (paraNormal == 0){
+                        txtResultado.setTextColor(Color.GREEN);
+                        txtResultado.setText(String.valueOf(format.format(imc)));
+
                         txtClassificacao.setText(new StringBuilder().append(classificacao)
                                 .append("Você está no peso ideal"));
+
                     } else {
+                        txtResultado.setTextColor(Color.RED);
+                        txtResultado.setText(String.valueOf(format.format(imc)));
+
                         txtClassificacao.setText(new StringBuilder().append(classificacao).append("Faltam ")
                                 .append(String.valueOf(format.format(paraNormal))).append(" para o peso ideal.").toString());
                     }
@@ -118,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
 
 
 
