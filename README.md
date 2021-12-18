@@ -15,7 +15,7 @@
  <a href="#-demonstração">Demonstração</a> •
  <a href="#-pré-requisitos">Pré-requisitos</a> •
  <a href="#-como-rodar">Como rodar</a> •
- <a href="#-autor">Autor</a> •
+ <a href="#-autor">Autor</a> 
 </p>
 
 <h2>📌 Sobre</h2>
