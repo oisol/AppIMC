@@ -20,7 +20,7 @@
 
 <h2>📌 Sobre</h2>
 
-<p>Este projeto é uma implementação de um trabalho que foi proposto na minha faculdade, com a disciplina de Programação
+<p>Esse projeto é uma implementação de um trabalho que foi proposto na minha faculdade, com a disciplina de Programação
 para dispositivos moveis. Seu objetivo é informar o resultado do IMC (Índice de massa corporal)
 com base na altura e peso informado, não leva em critério a idade ou sexo.</p>
 
